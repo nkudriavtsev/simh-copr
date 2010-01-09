@@ -1,6 +1,6 @@
 Name:		simh
 Version:	3.8.1
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	A highly portable, multi-system emulator
 
 Group:		Applications/Emulators
@@ -22,6 +22,7 @@ Source1:	simh-generate-tarball.sh
 # and add fedora optflags
 Patch0:		simh-3.8.0-gcc.patch
 Patch1:		simh-3.8.1-altair-segfault.patch
+Patch2:		simh-3.8.1-ppc-defines.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	libpcap-devel, dos2unix
@@ -53,6 +54,7 @@ SIMH implements simulators for:
 %setup -qn %{name}-%{version}
 %patch0 -p1 -b .gcc
 %patch1 -p1 -b .altair-segfault
+%patch2 -p1 -b .ppc-define
 
 
 %build
@@ -84,6 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Jan 09 2010 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-6
+- add ppc defines patch
+
 * Sat Jan 09 2010 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-5
 - fix altair segfault
 

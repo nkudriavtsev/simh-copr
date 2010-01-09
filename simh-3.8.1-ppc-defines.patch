@@ -1,0 +1,44 @@
+diff -Naur simh-3.8.1/BIN/pdp1 simh-3.8.1-mod/BIN/pdp1
+\ No newline at end of file
+diff -Naur simh-3.8.1/BIN/pdp11 simh-3.8.1-mod/BIN/pdp11
+\ No newline at end of file
+diff -Naur simh-3.8.1/BIN/pdp15 simh-3.8.1-mod/BIN/pdp15
+\ No newline at end of file
+diff -Naur simh-3.8.1/BIN/pdp4 simh-3.8.1-mod/BIN/pdp4
+\ No newline at end of file
+diff -Naur simh-3.8.1/BIN/pdp7 simh-3.8.1-mod/BIN/pdp7
+\ No newline at end of file
+diff -Naur simh-3.8.1/BIN/pdp8 simh-3.8.1-mod/BIN/pdp8
+\ No newline at end of file
+diff -Naur simh-3.8.1/BIN/pdp9 simh-3.8.1-mod/BIN/pdp9
+\ No newline at end of file
+diff -Naur simh-3.8.1/NOVA/eclipse_cpu.c simh-3.8.1-mod/NOVA/eclipse_cpu.c
+--- simh-3.8.1/NOVA/eclipse_cpu.c	2008-05-21 11:07:52.000000000 +0300
++++ simh-3.8.1-mod/NOVA/eclipse_cpu.c	2010-01-09 16:28:08.000000000 +0200
+@@ -365,7 +365,7 @@
+ 
+ int32 XCT_mode = 0;                                     /* 1 if XCT mode */
+ int32 XCT_inst = 0;                                     /* XCT instruction */
+-int32 PPC = -1;
++int32 _PPC = -1;
+ int32 AMASK = 077777;
+ 
+ struct ndev dev_table[64];                              /* dispatch table */
+@@ -850,14 +850,14 @@
+ }
+ 
+ if ((PC < 1 || PC > 077777) && Debug_Flags) {
+-    if (PPC != -1) {                                    /* Don't break on 1st instruction */
+-        printf("\n<<Invalid PC=%o from %o>>\n\r", PC, PPC);
++    if (_PPC != -1) {                                    /* Don't break on 1st instruction */
++        printf("\n<<Invalid PC=%o from %o>>\n\r", PC, _PPC);
+         reason = STOP_IBKPT;
+         break;
+     }    
+ }
+ 
+-PPC = PC;
++_PPC = PC;
+ 
+ if (Debug_Flags) {
+     if (!Tron) {
