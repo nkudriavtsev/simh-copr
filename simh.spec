@@ -1,6 +1,6 @@
 Name:		simh
 Version:	3.8.1
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	A highly portable, multi-system emulator
 
 Group:		Applications/Emulators
@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed May 19 2010 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-6
+- bump rev to fix NVR to be higher than prevous version
+
 * Sat Jan 09 2010 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-5
 - fix altair segfault
 
