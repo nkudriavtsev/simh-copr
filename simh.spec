@@ -66,7 +66,7 @@ mkdir -p $RPM_BUILD_ROOT%{_bindir}
 for i in `ls BIN/`; do
 	install -p -m 755 BIN/$i $RPM_BUILD_ROOT%{_bindir}/simh-$i
 done
-mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
+mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}
 for i in `find -iname "*.txt"`; do dos2unix -k $i; done
 
 %clean
