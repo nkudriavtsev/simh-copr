@@ -1,6 +1,6 @@
 Name:		simh
 Version:	3.8.1
-Release:	10%{?dist}
+Release:	11%{?dist}
 Summary:	A highly portable, multi-system emulator
 
 Group:		Applications/Emulators
@@ -84,6 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Aug 06 2013 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-11
+- don't create versioned docdir
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.8.1-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
