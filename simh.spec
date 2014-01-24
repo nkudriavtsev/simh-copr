@@ -1,6 +1,6 @@
 Name:		simh
-Version:	3.8.1
-Release:	11%{?dist}
+Version:	3.9.0
+Release:	1%{?dist}
 Summary:	A highly portable, multi-system emulator
 
 Group:		Applications/Emulators
@@ -18,10 +18,6 @@ Source0:	simh-%{version}-noroms.tar.gz
 # ./simh-generate-tarball.sh 3.8.1
 Source1:	simh-generate-tarball.sh
 
-# prefer default gnu89 (ISO C90) as C99 is not fully supported by cc
-# and add fedora optflags
-Patch0:		simh-3.8.0-gcc.patch
-Patch1:		simh-3.8.1-altair-segfault.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	libpcap-devel, dos2unix
@@ -51,13 +47,11 @@ SIMH implements simulators for:
 
 %prep
 %setup -qn %{name}-%{version}
-%patch0 -p1 -b .gcc
-%patch1 -p1 -b .altair-segfault
 
 
 %build
 mkdir -p BIN
-make %{?_smp_mflags} -e OPT="%{optflags}" USE_NETWORK=1
+make %{?_smp_mflags} -e ROMS_OPT="%{optflags}" USE_NETWORK=1
 
 
 %install
@@ -76,7 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{_bindir}/*
-%doc ALTAIR/altair.txt NOVA/eclipse.txt 0readme_38.txt 0readme_ethernet.txt
+%doc ALTAIR/altair.txt NOVA/eclipse.txt 0readme_39.txt 0readme_ethernet.txt
 %doc HP2100/hp2100_diag.txt I7094/i7094_bug_history.txt Interdata/id_diag.txt
 %doc PDP1/pdp1_diag.txt PDP10/pdp10_bug_history.txt PDP18B/pdp18b_diag.txt
 %doc S3/haltguide.txt S3/readme_s3.txt S3/system3.txt SDS/sds_diag.txt
@@ -84,6 +78,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jan 24 2014 Lucian Langa <cooly@gnome.eu.org> - 3.9.0-1
+- sync with latest upstream stable
+- drop all patches - fixed upstream
+- fix bogus dates
+
 * Tue Aug 06 2013 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-11
 - don't create versioned docdir
 
@@ -114,7 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 * Sun Nov 08 2009 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-2
 - add correct generate script
 
-* Wed Oct 08 2009 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-1
+* Thu Oct 08 2009 Lucian Langa <cooly@gnome.eu.org> - 3.8.1-1
 - remove separate docs
 - misc cleanups
 - new upstream release
