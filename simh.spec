@@ -1,6 +1,6 @@
 Name:		simh
 Version:	3.9.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	A highly portable, multi-system emulator
 
 Group:		Applications/Emulators
@@ -78,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jun 08 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.9.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Fri Jan 24 2014 Lucian Langa <cooly@gnome.eu.org> - 3.9.0-1
 - sync with latest upstream stable
 - drop all patches - fixed upstream
