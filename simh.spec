@@ -18,7 +18,6 @@ Source0:	simh-%{version}-noroms.tar.gz
 # ./simh-generate-tarball.sh 3.8.1
 Source1:	simh-generate-tarball.sh
 
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	libpcap-devel, dos2unix
 #Requires:
