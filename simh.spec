@@ -62,9 +62,6 @@ done
 mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}
 for i in `find -iname "*.txt"`; do dos2unix -k $i; done
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 
 %files
 %defattr(-,root,root,-)
