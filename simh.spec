@@ -64,7 +64,6 @@ for i in `find -iname "*.txt"`; do dos2unix -k $i; done
 
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/*
 %doc ALTAIR/altair.txt NOVA/eclipse.txt 0readme_39.txt 0readme_ethernet.txt
 %doc HP2100/hp2100_diag.txt I7094/i7094_bug_history.txt Interdata/id_diag.txt
