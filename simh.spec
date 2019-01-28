@@ -3,7 +3,6 @@ Version:	3.9.0
 Release:	10%{?dist}
 Summary:	A highly portable, multi-system emulator
 
-Group:		Applications/Emulators
 #The licensing is mostly MIT, but there is also some GPL+ (literally, v1+) code
 #in there, notably in AltairZ80/.
 #(each target is compiled into its own binary, so only AltairZ80 is GPL+)
