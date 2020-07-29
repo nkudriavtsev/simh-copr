@@ -1,7 +1,7 @@
 %define _legacy_common_support 1
 Name:		simh
 Version:	3.11.0
-Release:	14%{?dist}
+Release:	15%{?dist}
 Summary:	A highly portable, multi-system emulator
 
 #The licensing is mostly MIT, but there is also some GPL+ (literally, v1+) code
@@ -74,6 +74,9 @@ for i in `find -iname "*.txt"`; do dos2unix -k $i; done
 
 
 %changelog
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.11.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Sun Apr 05 2020 Lucian Langa <lucilanga@gnome.eu.org> - 3.9.0-14
 - update generation script
 - apply temporary gcc10 fix
