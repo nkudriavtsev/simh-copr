@@ -19,6 +19,7 @@ Source0:	simh-%{version}-noroms.tar.gz
 Source1:	simh-generate-tarball.sh
 
 
+BuildRequires: make
 BuildRequires:  gcc
 BuildRequires:	libpcap-devel, dos2unix
 #Requires:
