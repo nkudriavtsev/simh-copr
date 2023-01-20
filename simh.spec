@@ -17,6 +17,8 @@ Source0:	simh-%{version}-noroms.tar.gz
 # tarball's directory:
 # ./simh-generate-tarball.sh 3.8.1
 Source1:	simh-generate-tarball.sh
+Patch0:         simh-3.11.0-no-fseeko64.patch
+Patch1:         simh-3.11.0-no-common.patch
 
 
 BuildRequires: make
@@ -48,10 +50,14 @@ SIMH implements simulators for:
 
 %prep
 %setup -qn %{name}-%{version}/sim
+%patch0 -p2
+%patch1 -p2
 
 
 %build
 mkdir -p BIN
+CC="$CC -I . -fPIE -g"
+LDFLAGS="$LDFLAGS -lm"
 make %{?_smp_mflags} -e ROMS_OPT="%{optflags}" USE_NETWORK=1
 
 
@@ -75,6 +81,9 @@ for i in `find -iname "*.txt"`; do dos2unix -k $i; done
 
 
 %changelog
+* Fri Jan 20 2023 Joshua Cogliati <jrincayc@yahoo.com> - 3.11.0-20
+- Fix FTBFS
+
 * Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.11.0-19
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 

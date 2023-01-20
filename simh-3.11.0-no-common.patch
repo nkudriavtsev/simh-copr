@@ -1,0 +1,12 @@
+diff -ur simh-3.11.0/sim/PDP11/pdp11_defs.h simh-3.11.0m/sim/PDP11/pdp11_defs.h
+--- simh-3.11.0/sim/PDP11/pdp11_defs.h	2017-02-10 07:31:48.000000000 -0700
++++ simh-3.11.0m/sim/PDP11/pdp11_defs.h	2023-01-20 10:36:04.051199740 -0700
+@@ -900,7 +900,7 @@
+ #define WrMemW(pa,d)    uc15_WrMemW (pa, d)
+ #define WrMemB(pa, d)   uc15_WrMemB (pa, d)
+ 
+-uint32 uc15_memsize;
++extern uint32 uc15_memsize;
+ int32 uc15_RdMemW (int32 pa);
+ int32 uc15_RdMemB (int32 pa);
+ void uc15_WrMemW (int32 pa, int32 d);
