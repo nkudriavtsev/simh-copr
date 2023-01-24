@@ -1,7 +1,7 @@
 %define _legacy_common_support 1
 Name:		simh
 Version:	3.11.0
-Release:	21%{?dist}
+Release:	22%{?dist}
 Summary:	A highly portable, multi-system emulator
 
 #The licensing is mostly MIT, but there is also some GPL+ (literally, v1+) code
@@ -79,6 +79,9 @@ for i in `find -iname "*.txt"`; do dos2unix -k $i; done
 
 
 %changelog
+* Tue Jan 24 2023 Lucian Langa <lucilanga@gnome.eu.org> - 3.11.0-22
+- forgot the patch file in previous commit
+
 * Tue Jan 24 2023 Lucian Langa <lucilanga@gnome.eu.org> - 3.11.0-21
 - add patch from Joshua Cogliati <jrincayc@yahoo.com> to fix FTBFS
 - update build flags

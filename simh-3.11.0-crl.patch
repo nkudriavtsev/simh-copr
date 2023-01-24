@@ -1,0 +1,48 @@
+diff '--color=auto' -Naur simh-3.11.0/sim/PDP11/pdp11_defs.h simh-3.11.0-mod/sim/PDP11/pdp11_defs.h
+--- simh-3.11.0/sim/PDP11/pdp11_defs.h	2017-02-10 15:31:48.000000000 +0100
++++ simh-3.11.0-mod/sim/PDP11/pdp11_defs.h	2023-01-24 07:58:53.969038121 +0100
+@@ -900,7 +900,7 @@
+ #define WrMemW(pa,d)    uc15_WrMemW (pa, d)
+ #define WrMemB(pa, d)   uc15_WrMemB (pa, d)
+ 
+-uint32 uc15_memsize;
++extern uint32 uc15_memsize;
+ int32 uc15_RdMemW (int32 pa);
+ int32 uc15_RdMemB (int32 pa);
+ void uc15_WrMemW (int32 pa, int32 d);
+diff '--color=auto' -Naur simh-3.11.0/sim/sim_fio.c simh-3.11.0-mod/sim/sim_fio.c
+--- simh-3.11.0/sim/sim_fio.c	2019-02-05 14:03:02.000000000 +0100
++++ simh-3.11.0-mod/sim/sim_fio.c	2023-01-24 07:59:00.666042586 +0100
+@@ -182,7 +182,7 @@
+ #if defined (VMS)
+ return fopen (file, mode, "ALQ=32", "DEQ=4096",
+         "MBF=6", "MBC=127", "FOP=cbt,tef", "ROP=rah,wbh", "CTX=stm");
+-#elif (defined (__linux) || defined (__linux__) || defined (__hpux) || defined (_AIX)) && !defined (DONT_DO_LARGEFILE)
++#elif (defined (__hpux) || defined (_AIX)) && !defined (DONT_DO_LARGEFILE)
+ return fopen64 (file, mode);
+ #else
+ return fopen (file, mode);
+@@ -261,9 +261,9 @@
+ 
+ #endif                                                  /* end Windows */
+ 
+-/* Linux, HP/UX, and AIX */
++/* HP/UX, and AIX */
+ 
+-#if defined (__linux) || defined (__linux__) || defined (__hpux) || defined (_AIX)
++#if defined (__hpux) || defined (_AIX)
+ #define S_SIM_IO_FSEEK_EXT_ 1
+ 
+ int sim_fseeko (FILE *st, t_offset xpos, int origin)
+@@ -278,9 +278,9 @@
+ 
+ #endif                                                  /* end Linux with LFS */
+ 
+-/* Apple OS/X and the BSD family */
++/* Linux, Apple OS/X and the BSD family */
+ 
+-#if defined (__APPLE__) || defined (__FreeBSD__) || defined(__NetBSD__) || defined (__OpenBSD__) 
++#if defined (__linux) || defined (__linux__) || defined (__APPLE__) || defined (__FreeBSD__) || defined(__NetBSD__) || defined (__OpenBSD__) 
+ #define S_SIM_IO_FSEEK_EXT_ 1
+ 
+ int sim_fseeko (FILE *st, t_offset xpos, int origin) 
