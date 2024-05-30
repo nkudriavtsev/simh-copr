@@ -49,7 +49,7 @@ SIMH implements simulators for:
 
 %prep
 %setup -qn %{name}-%{version}/sim
-%patch0 -p2
+%patch -P0 -p2
 
 
 %build
