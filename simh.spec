@@ -1,7 +1,8 @@
 %define _legacy_common_support 1
+%define tag v3.12-2
 Name:		simh
-Version:	3.11.0
-Release:	24%{?dist}
+Version:	3.12.2
+Release:	1%{?dist}
 Summary:	A highly portable, multi-system emulator
 
 #The licensing is mostly MIT, but there is also some GPL+ (literally, v1+) code
@@ -10,7 +11,7 @@ Summary:	A highly portable, multi-system emulator
 License:	MIT and GPL+
 
 URL:		http://simh.trailing-edge.com/
-Source0:	simh-%{version}-noroms.tar.gz
+Source0:	https://github.com/simh/simh/archive/refs/tags/%{tag}.tar.gz
 # we use
 # this script to remove the roms binary and patented code before shipping it.
 # Download the upstream tarball and invoke this script while in the
